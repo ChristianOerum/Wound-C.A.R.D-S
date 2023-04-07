@@ -1,16 +1,16 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
-import HomePage from '../views/HomePage.vue'
+import WoundCardMain from '../views/WoundCardMain.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/home'
+    redirect: '/woundcard-main'
   },
   {
-    path: '/home',
-    name: 'Home',
-    component: HomePage
+    path: '/woundcard-main',
+    name: 'WoundCardMain',
+    component: WoundCardMain
   }
 ]
 
