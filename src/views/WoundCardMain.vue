@@ -12,9 +12,9 @@
 
             <div class="bg-[#3E3C2F]/[.7] absolute bottom-[35px] h-[70px] w-[55%] rounded-full p-[7px]">
 
-                <div class="bg-[#F8D027]/[.14] h-[100%] rounded-full">
+                <div class="bg-[#F8D027]/[.14] h-[100%] rounded-full overflow-hidden">
 
-                    <div class="rounded-full bg-[#F8D027] h-[100%] w-[56px] flex flex-col items-center justify-center">
+                    <div id="slider" class="relative rounded-full bg-[#F8D027] h-[100%] w-[56px] flex flex-col items-center justify-center">
                         
                         <SVG_icon class="h-[70%] w-[70%]" name="dice"></SVG_icon>
 
@@ -43,5 +43,44 @@
 import nav_bar from '../components/nav_bar.vue'
 import plate_helmet_toggle from '../components/plate_helmet_toggle.vue'
 import SVG_icon from '../assets/SVG_icons.vue'
+
+//import store
+import { store } from '../store/store.js'
+
+//vue imports
+import { onMounted } from 'vue'
+
+
+onMounted(() => {
+    const slider = document.getElementById('slider')
+    
+    var mouseDown = false, mouseX = 0
+
+    slider.addEventListener('touchstart', function (evt) {
+        console.log("mouse down")
+        slider.style.transition = ""
+        mouseDown = true;
+    });
+
+    document.addEventListener('touchmove', function (evt) {
+            if (!mouseDown) {
+                return
+            }
+            else {
+                var deltaX = evt.touches[0].clientX - mouseX
+                mouseX = evt.touches[0].clientX
+                
+                slider.style.left = (mouseX-160)+"px";
+            } 
+        })
+
+    document.addEventListener('touchend', function (evt) {
+        console.log("mouse up")
+        slider.style.left = "0px"
+        slider.style.transition = "left .7s ease"
+        mouseDown = false;
+    });
+
+})
 
 </script>
