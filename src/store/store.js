@@ -26,7 +26,7 @@ export const store = createStore({
               armorTrue: {timerActive: false, time: null},
               armorFalse: {timerActive: false, time: null}
             },
-            vectorSrc: ""
+            vectorSrc: "left-hand"
           },
 
           { 
@@ -46,7 +46,7 @@ export const store = createStore({
               armorTrue: {timerActive: false, time: null},
               armorFalse: {timerActive: false, time: null}
             },
-            vectorSrc: ""
+            vectorSrc: "right-hand"
           },
 
           { 
@@ -86,7 +86,7 @@ export const store = createStore({
               armorTrue: {timerActive: false, time: null},
               armorFalse: {timerActive: false, time: null}
             },
-            vectorSrc: ""
+            vectorSrc: "left-upper-arm"
           },
 
           { 
@@ -106,7 +106,7 @@ export const store = createStore({
               armorTrue: {timerActive: false, time: null},
               armorFalse: {timerActive: false, time: null}
             },
-            vectorSrc: ""
+            vectorSrc: "left-lower-arm"
           },
 
           { 
@@ -126,7 +126,7 @@ export const store = createStore({
               armorTrue: {timerActive: false, time: null},
               armorFalse: {timerActive: false, time: null}
             },
-            vectorSrc: ""
+            vectorSrc: "right-upper-arm"
           },
 
           { 
@@ -146,7 +146,7 @@ export const store = createStore({
               armorTrue: {timerActive: false, time: null},
               armorFalse: {timerActive: true, time: 300}
             },
-            vectorSrc: ""
+            vectorSrc: "right-thigh"
           },
 
           { 
@@ -166,7 +166,7 @@ export const store = createStore({
               armorTrue: {timerActive: false, time: null},
               armorFalse: {timerActive: true, time: 300}
             },
-            vectorSrc: ""
+            vectorSrc: "throat"
           },
 
           { 
@@ -186,7 +186,7 @@ export const store = createStore({
               armorTrue: {timerActive: false, time: null},
               armorFalse: {timerActive: false, time: null}
             },
-            vectorSrc: "../assets/svg/head_avatar.svg"
+            vectorSrc: "head"
           },
 
           { 
@@ -206,7 +206,7 @@ export const store = createStore({
               armorTrue: {timerActive: false, time: null},
               armorFalse: {timerActive: true, time: 60}
             },
-            vectorSrc: "../assets/svg/head_avatar.svg"
+            vectorSrc: "head"
           },
 
           { 
@@ -226,7 +226,7 @@ export const store = createStore({
               armorTrue: {timerActive: false, time: null},
               armorFalse: {timerActive: false, time: null}
             },
-            vectorSrc: ""
+            vectorSrc: "head"
           },
 
           { 
@@ -246,7 +246,7 @@ export const store = createStore({
               armorTrue: {timerActive: false, time: null},
               armorFalse: {timerActive: false, time: null}
             },
-            vectorSrc: ""
+            vectorSrc: "equipment-mags"
           },
 
           { 
@@ -266,7 +266,7 @@ export const store = createStore({
               armorTrue: {timerActive: false, time: null},
               armorFalse: {timerActive: true, time: 300}
             },
-            vectorSrc: ""
+            vectorSrc: "left-thigh"
           },
 
           { 
@@ -286,7 +286,7 @@ export const store = createStore({
               armorTrue: {timerActive: false, time: null},
               armorFalse: {timerActive: false, time: null}
             },
-            vectorSrc: ""
+            vectorSrc: "sidearm"
           },
 
           { 
@@ -306,7 +306,7 @@ export const store = createStore({
               armorTrue: {timerActive: false, time: null},
               armorFalse: {timerActive: true, time: 300}
             },
-            vectorSrc: "../assets/svg/chest_avatar.svg"
+            vectorSrc: "chest"
           },
 
           { 
@@ -326,7 +326,7 @@ export const store = createStore({
               armorTrue: {timerActive: true, time: 300},
               armorFalse: {timerActive: false, time: null}
             },
-            vectorSrc: "../assets/svg/chest_avatar.svg"
+            vectorSrc: "chest"
           },
 
           { 
@@ -346,7 +346,7 @@ export const store = createStore({
               armorTrue: {timerActive: true, time: 180},
               armorFalse: {timerActive: false, time: null}
             },
-            vectorSrc: "../assets/svg/torso-chest-back_avatar.svg"
+            vectorSrc: "torso"
           },
 
           { 
@@ -366,7 +366,7 @@ export const store = createStore({
               armorTrue: {timerActive: false, time: null},
               armorFalse: {timerActive: true, time: 300}
             },
-            vectorSrc: "../assets/svg/torso-chest-back_avatar.svg"
+            vectorSrc: "torso"
           },
 
           { 
@@ -386,7 +386,7 @@ export const store = createStore({
               armorTrue: {timerActive: true, time: 180},
               armorFalse: {timerActive: false, time: null}
             },
-            vectorSrc: "../assets/svg/head_avatar.svg"
+            vectorSrc: "head"
           },
 
           { 
@@ -406,7 +406,7 @@ export const store = createStore({
               armorTrue: {timerActive: true, time: 180},
               armorFalse: {timerActive: false, time: null}
             },
-            vectorSrc: "../assets/svg/head_avatar.svg"
+            vectorSrc: "head"
           },
 
           { 
@@ -426,7 +426,7 @@ export const store = createStore({
               armorTrue: {timerActive: false, time: null},
               armorFalse: {timerActive: true, time: 300}
             },
-            vectorSrc: ""
+            vectorSrc: "equipment-radio"
           },
 
 

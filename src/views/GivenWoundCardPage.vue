@@ -27,7 +27,7 @@
             </div>
 
 
-            <img class="h-[100px] absolute bottom-[10px] h-[85%]" :src='getSVGsrc()'>
+            <img id="vectorAvatar" class="h-[100px] absolute bottom-[10px] h-[85%]" src="../assets/svg/blank_avatar.svg">
 
 
 
@@ -99,15 +99,36 @@ import nav_bar from '../components/nav_bar.vue'
 import plate_helmet_toggle from '../components/plate_helmet_toggle.vue'
 import SVG_icon from '../assets/SVG_icons.vue'
 
+//import avatars
+import chest_avatar from '../assets/svg/chest_avatar.svg'
+import torso_back_chest_avatar from '../assets/svg/torso-chest-back_avatar.svg'
+import head_avatar from '../assets/svg/head_avatar.svg'
+
 //import store
 import { store } from '../store/store.js'
 
+//import onmount
+import { onMounted } from 'vue'
+
 let index = Number(localStorage.getItem("generatedWoundCard_Index"))
 
+onMounted(() => {
 
-function getSVGsrc() {
-    console.log(store.state.wound_cards[index].vectorSrc)
-    return ("../assets/svg/blank_avatar.svg") 
-}
+    const svg = document.getElementById('vectorAvatar')
+    console.log(svg)
+    if (store.state.wound_cards[index].vectorSrc == "chest") {
+        svg.src = chest_avatar
+    }
+    
+    else if (store.state.wound_cards[index].vectorSrc == "torso") {
+        svg.src = torso_back_chest_avatar
+    }
+
+    else if (store.state.wound_cards[index].vectorSrc == "head") {
+        svg.src = head_avatar
+    }
+
+})
+
 
 </script>
