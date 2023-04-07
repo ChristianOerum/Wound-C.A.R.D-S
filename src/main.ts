@@ -25,10 +25,13 @@ import '@ionic/vue/css/display.css';
 //import tailwind
 import './assets/style.css'
 
+//import auto animate
+import { autoAnimatePlugin } from '@formkit/auto-animate/vue'
 
 const app = createApp(App)
   .use(IonicVue)
   .use(router)
+  .use(autoAnimatePlugin)
   .use(store)
   
 router.isReady().then(() => {

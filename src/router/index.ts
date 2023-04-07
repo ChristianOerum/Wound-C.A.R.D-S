@@ -1,6 +1,9 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
+
+//views
 import WoundCardMain from '../views/WoundCardMain.vue'
+import GivenWoundCard from '../views/GivenWoundCardPage.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -11,6 +14,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/woundcard-main',
     name: 'WoundCardMain',
     component: WoundCardMain
+  },
+  {
+    path: '/given-woundcard',
+    name: 'GivenWoundCardPage',
+    component: GivenWoundCard
   }
 ]
 

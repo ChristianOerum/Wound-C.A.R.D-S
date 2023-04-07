@@ -57,7 +57,6 @@ onMounted(() => {
     var mouseDown = false, mouseX = 0
 
     slider.addEventListener('touchstart', function (evt) {
-        console.log("mouse down")
         slider.style.transition = ""
         mouseDown = true;
     });
@@ -69,16 +68,29 @@ onMounted(() => {
             else {
                 var deltaX = evt.touches[0].clientX - mouseX
                 mouseX = evt.touches[0].clientX
-                
-                slider.style.left = (mouseX-160)+"px";
+                let sliderX = (mouseX-((window.innerWidth*0.55)/2)) - (56/2)
+                let sliderXMax = window.innerWidth - ((window.innerWidth*0.55)) - 56
+
+                slider.style.left = (sliderX)+"px";
+
+            
+
+                if (  sliderX >= sliderXMax ) {
+                    console.log("confirmed")
+
+                    slider.style.left = sliderXMax + "px"
+                    mouseDown = false;
+                }
+
             } 
         })
 
     document.addEventListener('touchend', function (evt) {
-        console.log("mouse up")
-        slider.style.left = "0px"
-        slider.style.transition = "left .7s ease"
-        mouseDown = false;
+        if (mouseDown == true) {
+            slider.style.left = "0px"
+            slider.style.transition = "left .7s ease"
+            mouseDown = false;
+        }
     });
 
 })
