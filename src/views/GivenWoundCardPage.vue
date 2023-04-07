@@ -43,7 +43,7 @@
                     <p class="font-semibold text-[#F8D027]">Efter behandlingen:</p>
                     <p class="mb-4 opacity-[0.9]">{{ store.state.wound_cards[store.state.generated_WoundcardIndex].efter_behandlingen.armorTrue }}</p>
 
-                    <div v-if="store.state.wound_cards[store.state.generated_WoundcardIndex].behandlings_timer != false" class="bg-[#3E3C2F]/[.7] h-[50px] w-[100%] rounded-full p-[7px]">
+                    <div v-if="store.state.wound_cards[store.state.generated_WoundcardIndex].behandlings_timer.armorTrue.timerActive == true" class="bg-[#3E3C2F]/[.7] h-[50px] w-[100%] rounded-full p-[7px]">
                     </div>
                 </div>
 
@@ -57,7 +57,7 @@
                     <p class="font-semibold text-[#F8D027]">Efter behandlingen:</p>
                     <p class="mb-4 opacity-[0.9]">{{ store.state.wound_cards[store.state.generated_WoundcardIndex].efter_behandlingen.armorFalse }}</p>
 
-                    <div v-if="store.state.wound_cards[store.state.generated_WoundcardIndex].behandlings_timer != false" class="bg-[#3E3C2F]/[.7] h-[50px] w-[100%] rounded-full p-[7px]">
+                    <div v-if="store.state.wound_cards[store.state.generated_WoundcardIndex].behandlings_timer.armorFalse.timerActive == true" class="bg-[#3E3C2F]/[.7] h-[50px] w-[100%] rounded-full p-[7px]">
                     </div>
                 </div>
 
@@ -71,7 +71,7 @@
                     <p class="font-semibold text-[#F8D027]">Efter behandlingen:</p>
                     <p class="mb-4 opacity-[0.9]">{{ store.state.wound_cards[store.state.generated_WoundcardIndex].efter_behandlingen.armorFalse }}</p>
 
-                    <div v-if="store.state.wound_cards[store.state.generated_WoundcardIndex].behandlings_timer != false" class="bg-[#3E3C2F]/[.7] h-[50px] w-[100%] rounded-full p-[7px]">
+                    <div v-if="store.state.wound_cards[store.state.generated_WoundcardIndex].behandlings_timer.armorFalse.timerActive == true" class="bg-[#3E3C2F]/[.7] h-[50px] w-[100%] rounded-full p-[7px]">
                     </div>
                 </div>
 

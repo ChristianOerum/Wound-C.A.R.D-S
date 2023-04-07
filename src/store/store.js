@@ -196,7 +196,7 @@ export const store = createStore({
             headWound: true,
             behandling: {
               armorTrue: "Tilses af Medic i 1min.",
-              armorFalse: "Forbind patientens hoved.Giv smertestillende"
+              armorFalse: "Forbind patientens hoved. Giv smertestillende"
             },
             efter_behandlingen: {
               armorTrue: "Du er kampdygtig igen.",
@@ -396,7 +396,7 @@ export const store = createStore({
             headWound: true,
             behandling: {
               armorTrue: "Hjelmen ødelægges, patienten overlever men er bevidstløs i 3min. Giv smertestillende. Hjelmen er nu ubrugelig",
-              armorFalse: " Patienten er død."
+              armorFalse: "Patienten er død."
             },
             efter_behandlingen: {
               armorTrue: "Du er kampdygtig igen.",
