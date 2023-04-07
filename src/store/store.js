@@ -186,7 +186,7 @@ export const store = createStore({
               armorTrue: {timerActive: false, time: null},
               armorFalse: {timerActive: false, time: null}
             },
-            vectorSrc: ""
+            vectorSrc: "../assets/svg/head_avatar.svg"
           },
 
           { 
@@ -206,7 +206,7 @@ export const store = createStore({
               armorTrue: {timerActive: false, time: null},
               armorFalse: {timerActive: true, time: 60}
             },
-            vectorSrc: ""
+            vectorSrc: "../assets/svg/head_avatar.svg"
           },
 
           { 
@@ -306,7 +306,7 @@ export const store = createStore({
               armorTrue: {timerActive: false, time: null},
               armorFalse: {timerActive: true, time: 300}
             },
-            vectorSrc: ""
+            vectorSrc: "../assets/svg/chest_avatar.svg"
           },
 
           { 
@@ -326,7 +326,7 @@ export const store = createStore({
               armorTrue: {timerActive: true, time: 300},
               armorFalse: {timerActive: false, time: null}
             },
-            vectorSrc: ""
+            vectorSrc: "../assets/svg/chest_avatar.svg"
           },
 
           { 
@@ -346,7 +346,7 @@ export const store = createStore({
               armorTrue: {timerActive: true, time: 180},
               armorFalse: {timerActive: false, time: null}
             },
-            vectorSrc: ""
+            vectorSrc: "../assets/svg/torso-chest-back_avatar.svg"
           },
 
           { 
@@ -366,7 +366,7 @@ export const store = createStore({
               armorTrue: {timerActive: false, time: null},
               armorFalse: {timerActive: true, time: 300}
             },
-            vectorSrc: ""
+            vectorSrc: "../assets/svg/torso-chest-back_avatar.svg"
           },
 
           { 
@@ -386,7 +386,7 @@ export const store = createStore({
               armorTrue: {timerActive: true, time: 180},
               armorFalse: {timerActive: false, time: null}
             },
-            vectorSrc: ""
+            vectorSrc: "../assets/svg/head_avatar.svg"
           },
 
           { 
@@ -406,7 +406,7 @@ export const store = createStore({
               armorTrue: {timerActive: true, time: 180},
               armorFalse: {timerActive: false, time: null}
             },
-            vectorSrc: ""
+            vectorSrc: "../assets/svg/head_avatar.svg"
           },
 
           { 

@@ -27,51 +27,51 @@
             </div>
 
 
-            <img class="h-[100px] absolute bottom-[10px] h-[85%]" src='../assets/svg/blank_avatar.svg'/>
+            <img class="h-[100px] absolute bottom-[10px] h-[85%]" :src='getSVGsrc()'>
 
 
 
             <div class="absolute bottom-[35px] h-fit w-[100%] text-[18px] text-white">
 
-                <div v-if="(store.state.wound_cards[store.state.generated_WoundcardIndex].chestWound == true && store.state.armor.wearingChestPlate == true) || (store.state.wound_cards[store.state.generated_WoundcardIndex].headWound == true && store.state.armor.wearingHelmet == true)">
+                <div v-if="(store.state.wound_cards[index].chestWound == true && store.state.armor.wearingChestPlate == true) || (store.state.wound_cards[index].headWound == true && store.state.armor.wearingHelmet == true)">
                     <p class="font-semibold text-[#F8D027]">Skader1:</p>
-                    <p class="mb-2 opacity-[0.9]">{{ store.state.wound_cards[store.state.generated_WoundcardIndex].skade }}</p>
+                    <p class="mb-2 opacity-[0.9]">{{ store.state.wound_cards[index].skade }}</p>
 
                     <p class="font-semibold text-[#F8D027]">Behandling:</p>
-                    <p class="mb-2 opacity-[0.9]">{{ store.state.wound_cards[store.state.generated_WoundcardIndex].behandling.armorTrue }}</p>
+                    <p class="mb-2 opacity-[0.9]">{{ store.state.wound_cards[index].behandling.armorTrue }}</p>
 
                     <p class="font-semibold text-[#F8D027]">Efter behandlingen:</p>
-                    <p class="mb-4 opacity-[0.9]">{{ store.state.wound_cards[store.state.generated_WoundcardIndex].efter_behandlingen.armorTrue }}</p>
+                    <p class="mb-4 opacity-[0.9]">{{ store.state.wound_cards[index].efter_behandlingen.armorTrue }}</p>
 
-                    <div v-if="store.state.wound_cards[store.state.generated_WoundcardIndex].behandlings_timer.armorTrue.timerActive == true" class="bg-[#3E3C2F]/[.7] h-[50px] w-[100%] rounded-full p-[7px]">
+                    <div v-if="store.state.wound_cards[index].behandlings_timer.armorTrue.timerActive == true" class="bg-[#3E3C2F]/[.7] h-[50px] w-[100%] rounded-full p-[7px]">
                     </div>
                 </div>
 
-                <div v-else-if="(store.state.wound_cards[store.state.generated_WoundcardIndex].chestWound == true && store.state.armor.wearingChestPlate == false) || (store.state.wound_cards[store.state.generated_WoundcardIndex].headWound == true && store.state.armor.wearingHelmet == false)">
+                <div v-else-if="(store.state.wound_cards[index].chestWound == true && store.state.armor.wearingChestPlate == false) || (store.state.wound_cards[index].headWound == true && store.state.armor.wearingHelmet == false)">
                     <p class="font-semibold text-[#F8D027]">Skader2:</p>
-                    <p class="mb-2 opacity-[0.9]">{{ store.state.wound_cards[store.state.generated_WoundcardIndex].skade }}</p>
+                    <p class="mb-2 opacity-[0.9]">{{ store.state.wound_cards[index].skade }}</p>
 
                     <p class="font-semibold text-[#F8D027]">Behandling:</p>
-                    <p class="mb-2 opacity-[0.9]">{{ store.state.wound_cards[store.state.generated_WoundcardIndex].behandling.armorFalse }}</p>
+                    <p class="mb-2 opacity-[0.9]">{{ store.state.wound_cards[index].behandling.armorFalse }}</p>
 
                     <p class="font-semibold text-[#F8D027]">Efter behandlingen:</p>
-                    <p class="mb-4 opacity-[0.9]">{{ store.state.wound_cards[store.state.generated_WoundcardIndex].efter_behandlingen.armorFalse }}</p>
+                    <p class="mb-4 opacity-[0.9]">{{ store.state.wound_cards[index].efter_behandlingen.armorFalse }}</p>
 
-                    <div v-if="store.state.wound_cards[store.state.generated_WoundcardIndex].behandlings_timer.armorFalse.timerActive == true" class="bg-[#3E3C2F]/[.7] h-[50px] w-[100%] rounded-full p-[7px]">
+                    <div v-if="store.state.wound_cards[index].behandlings_timer.armorFalse.timerActive == true" class="bg-[#3E3C2F]/[.7] h-[50px] w-[100%] rounded-full p-[7px]">
                     </div>
                 </div>
 
-                <div v-else-if="store.state.wound_cards[store.state.generated_WoundcardIndex].chestWound == false && store.state.wound_cards[store.state.generated_WoundcardIndex].headWound == false ">
+                <div v-else-if="store.state.wound_cards[index].chestWound == false && store.state.wound_cards[index].headWound == false ">
                     <p class="font-semibold text-[#F8D027]">Skader3:</p>
-                    <p class="mb-2 opacity-[0.9]">{{ store.state.wound_cards[store.state.generated_WoundcardIndex].skade }}</p>
+                    <p class="mb-2 opacity-[0.9]">{{ store.state.wound_cards[index].skade }}</p>
 
                     <p class="font-semibold text-[#F8D027]">Behandling:</p>
-                    <p class="mb-2 opacity-[0.9]">{{ store.state.wound_cards[store.state.generated_WoundcardIndex].behandling.armorFalse }}</p>
+                    <p class="mb-2 opacity-[0.9]">{{ store.state.wound_cards[index].behandling.armorFalse }}</p>
 
                     <p class="font-semibold text-[#F8D027]">Efter behandlingen:</p>
-                    <p class="mb-4 opacity-[0.9]">{{ store.state.wound_cards[store.state.generated_WoundcardIndex].efter_behandlingen.armorFalse }}</p>
+                    <p class="mb-4 opacity-[0.9]">{{ store.state.wound_cards[index].efter_behandlingen.armorFalse }}</p>
 
-                    <div v-if="store.state.wound_cards[store.state.generated_WoundcardIndex].behandlings_timer.armorFalse.timerActive == true" class="bg-[#3E3C2F]/[.7] h-[50px] w-[100%] rounded-full p-[7px]">
+                    <div v-if="store.state.wound_cards[index].behandlings_timer.armorFalse.timerActive == true" class="bg-[#3E3C2F]/[.7] h-[50px] w-[100%] rounded-full p-[7px]">
                     </div>
                 </div>
 
@@ -102,21 +102,12 @@ import SVG_icon from '../assets/SVG_icons.vue'
 //import store
 import { store } from '../store/store.js'
 
-//vue imports
-import { onMounted } from 'vue'
+let index = Number(localStorage.getItem("generatedWoundCard_Index"))
 
-function getRandomInt(max) {
-  return Math.floor(Math.random() * max);
+
+function getSVGsrc() {
+    console.log(store.state.wound_cards[index].vectorSrc)
+    return ("../assets/svg/blank_avatar.svg") 
 }
-
-onMounted(() => {
-    //random woundcard generation
-    let genIndex= getRandomInt(store.state.wound_cards.length)
-
-    store.state.generated_WoundcardIndex = genIndex
-
-    console.log(genIndex)
-    console.log(store.state.wound_cards[store.state.generated_WoundcardIndex])
-})
 
 </script>

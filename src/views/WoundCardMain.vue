@@ -46,9 +46,11 @@ import SVG_icon from '../assets/SVG_icons.vue'
 
 //import store
 import { store } from '../store/store.js'
-
+import { router } from '../router/index.js'
+ 
 //vue imports
 import { onMounted } from 'vue'
+
 
 
 onMounted(() => {
@@ -60,6 +62,10 @@ onMounted(() => {
         slider.style.transition = ""
         mouseDown = true;
     });
+
+    function getRandomInt(max) {
+        return Math.floor(Math.random() * max);
+    }
 
     document.addEventListener('touchmove', function (evt) {
             if (!mouseDown) {
@@ -77,9 +83,17 @@ onMounted(() => {
 
                 if (  sliderX >= sliderXMax ) {
                     console.log("confirmed")
-
                     slider.style.left = sliderXMax + "px"
                     mouseDown = false;
+
+                    let genIndex= getRandomInt(store.state.wound_cards.length)
+
+                    localStorage.setItem("generatedWoundCard_Index", String(genIndex))
+
+                    console.log(genIndex)
+                    console.log(store.state.wound_cards[store.state.generated_WoundcardIndex])
+
+                    router.replace({ name: 'GivenWoundCardPage' })
                 }
 
             } 

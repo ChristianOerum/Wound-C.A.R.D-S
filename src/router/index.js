@@ -1,11 +1,10 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
-import { RouteRecordRaw } from 'vue-router';
 
 //views
 import WoundCardMain from '../views/WoundCardMain.vue'
 import GivenWoundCard from '../views/GivenWoundCardPage.vue'
 
-const routes: Array<RouteRecordRaw> = [
+const routes = [
   {
     path: '/',
     redirect: '/woundcard-main'
@@ -22,7 +21,7 @@ const routes: Array<RouteRecordRaw> = [
   }
 ]
 
-const router = createRouter({
+export const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes
 })
