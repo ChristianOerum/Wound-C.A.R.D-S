@@ -14,10 +14,10 @@
 
                 <div class="bg-[#F8D027]/[.14] h-[100%] rounded-full overflow-hidden relative">
 
-                    <p id="swipe-text" class="absolute font-semibold text-[#ffffff]/[.2] w-[100%] left-[66px] top-[15px]">Swipe her</p>
-
                     <div id="slider" class="relative rounded-full bg-[#F8D027] h-[100%] w-[56px] flex flex-col items-center justify-center">
                         
+                        <p id="swipe-text" class="absolute font-semibold text-[#ffffff]/[.2] w-[80px] left-[66px] top-[16px]">Swipe her</p>
+
                         <SVG_icon class="h-[70%] w-[70%]" name="dice"></SVG_icon>
 
                     </div>
