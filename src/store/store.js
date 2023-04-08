@@ -7,6 +7,8 @@ export const store = createStore({
           wearingChestPlate: true,
         },
         generated_WoundcardIndex: 0,
+        respawn_timer: 0,
+        countdownStarted: false,
         wound_cards: [
 
           { 
@@ -23,8 +25,8 @@ export const store = createStore({
               armorFalse: "Du er kampdygtig igen. Hånden kan ikke længere bruges."
             },
             behandlings_timer: {
-              armorTrue: {timerActive: false, time: null},
-              armorFalse: {timerActive: false, time: null}
+              armorTrue: {timerActive: false, time: null, dead: false},
+              armorFalse: {timerActive: false, time: null, dead: false}
             },
             vectorSrc: "left-hand"
           },
@@ -43,8 +45,8 @@ export const store = createStore({
               armorFalse: "Du er kampdygtig igen. Hånden kan ikke længere bruges."
             },
             behandlings_timer: {
-              armorTrue: {timerActive: false, time: null},
-              armorFalse: {timerActive: false, time: null}
+              armorTrue: {timerActive: false, time: null, dead: false},
+              armorFalse: {timerActive: false, time: null, dead: false}
             },
             vectorSrc: "right-hand"
           },
@@ -63,10 +65,10 @@ export const store = createStore({
               armorFalse: "Du er kampdygtig igen. Armen kan ikke længere bruges."
             },
             behandlings_timer: {
-              armorTrue: {timerActive: false, time: null},
-              armorFalse: {timerActive: false, time: null}
+              armorTrue: {timerActive: false, time: null, dead: false},
+              armorFalse: {timerActive: false, time: null, dead: false}
             },
-            vectorSrc: ""
+            vectorSrc: "right-lower-arm"
           },
 
           { 
@@ -83,8 +85,8 @@ export const store = createStore({
               armorFalse: "Du er kampdygtig igen."
             },
             behandlings_timer: {
-              armorTrue: {timerActive: false, time: null},
-              armorFalse: {timerActive: false, time: null}
+              armorTrue: {timerActive: false, time: null, dead: false},
+              armorFalse: {timerActive: false, time: null, dead: false}
             },
             vectorSrc: "left-upper-arm"
           },
@@ -103,8 +105,8 @@ export const store = createStore({
               armorFalse: "Du er kampdygtig igen. Armen kan ikke længere bruges."
             },
             behandlings_timer: {
-              armorTrue: {timerActive: false, time: null},
-              armorFalse: {timerActive: false, time: null}
+              armorTrue: {timerActive: false, time: null, dead: false},
+              armorFalse: {timerActive: false, time: null, dead: false}
             },
             vectorSrc: "left-lower-arm"
           },
@@ -123,8 +125,8 @@ export const store = createStore({
               armorFalse: "Du er kampdygtig igen."
             },
             behandlings_timer: {
-              armorTrue: {timerActive: false, time: null},
-              armorFalse: {timerActive: false, time: null}
+              armorTrue: {timerActive: false, time: null, dead: false},
+              armorFalse: {timerActive: false, time: null, dead: false}
             },
             vectorSrc: "right-upper-arm"
           },
@@ -143,8 +145,8 @@ export const store = createStore({
               armorFalse: "Du er kampdygtig igen."
             },
             behandlings_timer: {
-              armorTrue: {timerActive: false, time: null},
-              armorFalse: {timerActive: true, time: 300}
+              armorTrue: {timerActive: false, time: null, dead: false},
+              armorFalse: {timerActive: true, time: 300, dead: false}
             },
             vectorSrc: "right-thigh"
           },
@@ -163,8 +165,8 @@ export const store = createStore({
               armorFalse: "Du er kampdygtig igen."
             },
             behandlings_timer: {
-              armorTrue: {timerActive: false, time: null},
-              armorFalse: {timerActive: true, time: 300}
+              armorTrue: {timerActive: false, time: null, dead: false},
+              armorFalse: {timerActive: true, time: 300, dead: false}
             },
             vectorSrc: "throat"
           },
@@ -183,8 +185,8 @@ export const store = createStore({
               armorFalse: "Patienten er død."
             },
             behandlings_timer: {
-              armorTrue: {timerActive: false, time: null},
-              armorFalse: {timerActive: false, time: null}
+              armorTrue: {timerActive: false, time: null, dead: false},
+              armorFalse: {timerActive: false, time: null, dead: true}
             },
             vectorSrc: "head"
           },
@@ -203,8 +205,8 @@ export const store = createStore({
               armorFalse: "Du er kampdygtig igen."
             },
             behandlings_timer: {
-              armorTrue: {timerActive: false, time: null},
-              armorFalse: {timerActive: true, time: 60}
+              armorTrue: {timerActive: true, time: 60, dead: false},
+              armorFalse: {timerActive: false, time: null, dead: false}
             },
             vectorSrc: "head"
           },
@@ -223,8 +225,8 @@ export const store = createStore({
               armorFalse: "Patienten er død."
             },
             behandlings_timer: {
-              armorTrue: {timerActive: false, time: null},
-              armorFalse: {timerActive: false, time: null}
+              armorTrue: {timerActive: false, time: null, dead: true},
+              armorFalse: {timerActive: false, time: null, dead: true}
             },
             vectorSrc: "head"
           },
@@ -243,8 +245,8 @@ export const store = createStore({
               armorFalse: "Du er kampdygtig igen. To af dine fyldte magasiner eller ét fyldt boks magasin er ubrugeligt."
             },
             behandlings_timer: {
-              armorTrue: {timerActive: false, time: null},
-              armorFalse: {timerActive: false, time: null}
+              armorTrue: {timerActive: false, time: null, dead: false},
+              armorFalse: {timerActive: false, time: null, dead: false}
             },
             vectorSrc: "equipment-mags"
           },
@@ -263,8 +265,8 @@ export const store = createStore({
               armorFalse: "Du er kampdygtig igen."
             },
             behandlings_timer: {
-              armorTrue: {timerActive: false, time: null},
-              armorFalse: {timerActive: true, time: 300}
+              armorTrue: {timerActive: false, time: null, dead: false},
+              armorFalse: {timerActive: true, time: 300, dead: false}
             },
             vectorSrc: "left-thigh"
           },
@@ -283,8 +285,8 @@ export const store = createStore({
               armorFalse: "Du er kampdygtig igen. Side-arm er ubrugelig."
             },
             behandlings_timer: {
-              armorTrue: {timerActive: false, time: null},
-              armorFalse: {timerActive: false, time: null}
+              armorTrue: {timerActive: false, time: null, dead: false},
+              armorFalse: {timerActive: false, time: null, dead: false}
             },
             vectorSrc: "sidearm"
           },
@@ -299,12 +301,12 @@ export const store = createStore({
               armorFalse: "Patienten er ramt i lungen. Forbind patientens bryst. Giv drop i 5min. Giv smertestillende."
             },
             efter_behandlingen: {
-              armorTrue: "",
+              armorTrue: "Du er kampdygtig igen.",
               armorFalse: "Du er kampdygtig igen."
             },
             behandlings_timer: {
-              armorTrue: {timerActive: false, time: null},
-              armorFalse: {timerActive: true, time: 300}
+              armorTrue: {timerActive: false, time: null, dead: false},
+              armorFalse: {timerActive: true, time: 300, dead: false}
             },
             vectorSrc: "chest"
           },
@@ -323,8 +325,8 @@ export const store = createStore({
               armorFalse: "Patienten er død."
             },
             behandlings_timer: {
-              armorTrue: {timerActive: true, time: 300},
-              armorFalse: {timerActive: false, time: null}
+              armorTrue: {timerActive: true, time: 300, dead: false},
+              armorFalse: {timerActive: false, time: null, dead: true}
             },
             vectorSrc: "chest"
           },
@@ -343,8 +345,8 @@ export const store = createStore({
               armorFalse: "Patienten er død."
             },
             behandlings_timer: {
-              armorTrue: {timerActive: true, time: 180},
-              armorFalse: {timerActive: false, time: null}
+              armorTrue: {timerActive: true, time: 180, dead: false},
+              armorFalse: {timerActive: false, time: null, dead: true}
             },
             vectorSrc: "torso"
           },
@@ -363,8 +365,8 @@ export const store = createStore({
               armorFalse: "Du er kampdygtig igen."
             },
             behandlings_timer: {
-              armorTrue: {timerActive: false, time: null},
-              armorFalse: {timerActive: true, time: 300}
+              armorTrue: {timerActive: false, time: null, dead: false},
+              armorFalse: {timerActive: true, time: 300, dead: false}
             },
             vectorSrc: "torso"
           },
@@ -376,15 +378,15 @@ export const store = createStore({
             headWound: true,
             behandling: {
               armorTrue: "Hjelmen ødelægges, patienten overlever men er bevidstløs i 3min. Giv smertestillende. Hjelmen er nu ubrugelig",
-              armorFalse: " Patienten er død."
+              armorFalse: "Patienten er død."
             },
             efter_behandlingen: {
               armorTrue: "Du er kampdygtig igen.",
-              armorFalse: " Patienten er død."
+              armorFalse: "Patienten er død."
             },
             behandlings_timer: {
-              armorTrue: {timerActive: true, time: 180},
-              armorFalse: {timerActive: false, time: null}
+              armorTrue: {timerActive: true, time: 180, dead: false},
+              armorFalse: {timerActive: false, time: null, dead: true}
             },
             vectorSrc: "head"
           },
@@ -403,8 +405,8 @@ export const store = createStore({
               armorFalse: "Patienten er død."
             },
             behandlings_timer: {
-              armorTrue: {timerActive: true, time: 180},
-              armorFalse: {timerActive: false, time: null}
+              armorTrue: {timerActive: true, time: 180, dead: false},
+              armorFalse: {timerActive: false, time: null, dead: true}
             },
             vectorSrc: "head"
           },
@@ -423,8 +425,8 @@ export const store = createStore({
               armorFalse: "Du er kampdygtig igen. Din radio er ubrugelig."
             },
             behandlings_timer: {
-              armorTrue: {timerActive: false, time: null},
-              armorFalse: {timerActive: true, time: 300}
+              armorTrue: {timerActive: false, time: null, dead: false},
+              armorFalse: {timerActive: true, time: 300, dead: false}
             },
             vectorSrc: "equipment-radio"
           },

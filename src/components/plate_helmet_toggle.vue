@@ -86,16 +86,49 @@
 //import comps
 import SVG_icon from '../assets/SVG_icons.vue'
 
-//import store
+//import store and useRoute
 import { store } from '../store/store.js'
+import { useRoute } from 'vue-router';
+
+let index = Number(localStorage.getItem("generatedWoundCard_Index"))
+const route = useRoute()
 
 //funktioner
+function updateTreatCountdown(){
+    if (route.name == "GivenWoundCardPage") {
+
+    if ((store.state.wound_cards[index].chestWound == true && store.state.armor.wearingChestPlate == true) || (store.state.wound_cards[index].headWound == true && store.state.armor.wearingHelmet == true) && (store.state.wound_cards[index].behandlings_timer.armorTrue.timerActive == true)) {
+
+    store.state.respawn_timer = store.state.wound_cards[index].behandlings_timer.armorTrue.time
+    }
+
+    else if ((store.state.wound_cards[index].chestWound == true && store.state.armor.wearingChestPlate == false) || (store.state.wound_cards[index].headWound == true && store.state.armor.wearingHelmet == false) && (store.state.wound_cards[index].behandlings_timer.armorFalse.timerActive == true)) {
+
+    store.state.respawn_timer = store.state.wound_cards[index].behandlings_timer.armorFalse.time
+    }
+
+    else if (store.state.wound_cards[index].chestWound == false && store.state.wound_cards[index].headWound == false && store.state.wound_cards[index].behandlings_timer.armorFalse.timerActive == true) {
+
+    store.state.respawn_timer = store.state.wound_cards[index].behandlings_timer.armorFalse.time
+    }
+
+    console.log(store.state.respawn_timer)
+
+    }
+}
+
+
 function toggleChestPlate() {
     store.state.armor.wearingChestPlate = !store.state.armor.wearingChestPlate
+
+    localStorage.setItem("wearingChestPlate", !store.state.armor.wearingChestPlate);
+
+    updateTreatCountdown()
 }
 
 function toggleHelmet() {
     store.state.armor.wearingHelmet = !store.state.armor.wearingHelmet
+    updateTreatCountdown()
 }
 
 

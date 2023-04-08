@@ -90,8 +90,7 @@ onMounted(() => {
 
                     localStorage.setItem("generatedWoundCard_Index", String(genIndex))
 
-                    console.log(genIndex)
-                    console.log(store.state.wound_cards[store.state.generated_WoundcardIndex])
+                    console.log("Card id: " + store.state.wound_cards[genIndex].id)
 
                     router.replace({ name: 'GivenWoundCardPage' })
                 }
