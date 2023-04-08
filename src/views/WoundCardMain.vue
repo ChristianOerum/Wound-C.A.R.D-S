@@ -97,6 +97,7 @@ onMounted(() => {
 
                     console.log("Card id: " + store.state.wound_cards[genIndex].id)
 
+                    store.state.woundCardGenerated = true
                     router.replace({ name: 'GivenWoundCardPage' })
                 }
 

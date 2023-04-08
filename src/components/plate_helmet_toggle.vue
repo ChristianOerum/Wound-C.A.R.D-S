@@ -86,7 +86,7 @@
 //import comps
 import SVG_icon from '../assets/SVG_icons.vue'
 
-//import store and useRoute
+//import store and router
 import { store } from '../store/store.js'
 import { useRoute } from 'vue-router';
 
@@ -129,6 +129,5 @@ function toggleHelmet() {
 
     updateTreatCountdown()
 }
-
 
 </script>

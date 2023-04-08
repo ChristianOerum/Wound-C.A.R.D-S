@@ -36,7 +36,7 @@
 
 
                 <div v-if="(store.state.wound_cards[index].chestWound == true && store.state.armor.wearingChestPlate == true) || (store.state.wound_cards[index].headWound == true && store.state.armor.wearingHelmet == true)">
-                    <p class="font-semibold text-[#F8D027]">Skader1:</p>
+                    <p class="font-semibold text-[#F8D027]">Skader:</p>
                     <p class="mb-2 opacity-[0.9]">{{ store.state.wound_cards[index].skade }}</p>
 
                     <p class="font-semibold text-[#F8D027]">Behandling:</p>
@@ -97,7 +97,7 @@
 
 
                 <div v-else-if="(store.state.wound_cards[index].chestWound == true && store.state.armor.wearingChestPlate == false) || (store.state.wound_cards[index].headWound == true && store.state.armor.wearingHelmet == false)">
-                    <p class="font-semibold text-[#F8D027]">Skader2:</p>
+                    <p class="font-semibold text-[#F8D027]">Skader:</p>
                     <p class="mb-2 opacity-[0.9]">{{ store.state.wound_cards[index].skade }}</p>
 
                     <p class="font-semibold text-[#F8D027]">Behandling:</p>
@@ -157,7 +157,7 @@
 
 
                 <div v-else-if="store.state.wound_cards[index].chestWound == false && store.state.wound_cards[index].headWound == false ">
-                    <p class="font-semibold text-[#F8D027]">Skader3:</p>
+                    <p class="font-semibold text-[#F8D027]">Skader:</p>
                     <p class="mb-2 opacity-[0.9]">{{ store.state.wound_cards[index].skade }}</p>
 
                     <p class="font-semibold text-[#F8D027]">Behandling:</p>
@@ -361,6 +361,7 @@ function fmtMSS(s){return(s-(s%=60))/60+(9<s?':':':0')+s}
 
 function woundCardTreated(){
     console.log("Wound Treated!")
+    store.state.woundCardGenerated = false
     router.replace({ name: 'WoundCardMain' })
 }
 
@@ -376,7 +377,6 @@ function woundCardCountdownStart(){
             if (store.state.respawn_timer == 0 || store.state.countdownStarted == false) {
                 clearInterval(id);
                 store.state.countdownStarted = false
-                console.log("what")
             }
             store.state.respawn_timer -= 1
         }
