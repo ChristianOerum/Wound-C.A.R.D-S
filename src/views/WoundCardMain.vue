@@ -12,7 +12,9 @@
 
             <div class="bg-[#3E3C2F]/[.7] absolute bottom-[35px] h-[70px] w-[55%] rounded-full p-[7px]">
 
-                <div class="bg-[#F8D027]/[.14] h-[100%] rounded-full overflow-hidden">
+                <div class="bg-[#F8D027]/[.14] h-[100%] rounded-full overflow-hidden relative">
+
+                    <p id="swipe-text" class="absolute font-semibold text-[#ffffff]/[.2] w-[100%] left-[66px] top-[15px]">Swipe her</p>
 
                     <div id="slider" class="relative rounded-full bg-[#F8D027] h-[100%] w-[56px] flex flex-col items-center justify-center">
                         
@@ -55,6 +57,7 @@ import { onMounted } from 'vue'
 
 onMounted(() => {
     const slider = document.getElementById('slider')
+    const swipe_text = document.getElementById('swipe-text')
     
     var mouseDown = false, mouseX = 0
 
@@ -76,6 +79,8 @@ onMounted(() => {
                 mouseX = evt.touches[0].clientX
                 let sliderX = (mouseX-((window.innerWidth*0.55)/2)) - (56/2)
                 let sliderXMax = window.innerWidth - ((window.innerWidth*0.55)) - 56
+                swipe_text.style.opacity = "0"
+                swipe_text.style.transition = "opacity .3s ease"
 
                 slider.style.left = (sliderX)+"px";
 
@@ -100,6 +105,9 @@ onMounted(() => {
 
     document.addEventListener('touchend', function (evt) {
         if (mouseDown == true) {
+            swipe_text.style.opacity = "1"
+            swipe_text.style.transition = "opacity .3s ease"
+
             slider.style.left = "0px"
             slider.style.transition = "left .7s ease"
             mouseDown = false;

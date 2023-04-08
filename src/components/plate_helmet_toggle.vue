@@ -112,22 +112,21 @@ function updateTreatCountdown(){
     store.state.respawn_timer = store.state.wound_cards[index].behandlings_timer.armorFalse.time
     }
 
-    console.log(store.state.respawn_timer)
-
     }
 }
 
 
 function toggleChestPlate() {
     store.state.armor.wearingChestPlate = !store.state.armor.wearingChestPlate
-
-    localStorage.setItem("wearingChestPlate", !store.state.armor.wearingChestPlate);
+    localStorage.setItem('wearingChestPlate',store.state.armor.wearingChestPlate)
 
     updateTreatCountdown()
 }
 
 function toggleHelmet() {
     store.state.armor.wearingHelmet = !store.state.armor.wearingHelmet
+    localStorage.setItem('wearingHelmet',store.state.armor.wearingHelmet)
+
     updateTreatCountdown()
 }
 

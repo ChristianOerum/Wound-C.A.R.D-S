@@ -348,8 +348,6 @@ onMounted(() => {
     store.state.respawn_timer = store.state.wound_cards[index].behandlings_timer.armorFalse.time
     }
 
-    console.log(store.state.respawn_timer)
-
 
 })
 
@@ -381,7 +379,6 @@ function woundCardCountdownStart(){
                 console.log("what")
             }
             store.state.respawn_timer -= 1
-            console.log(store.state.respawn_timer)
         }
         id = setInterval(countdown,1000);
     }

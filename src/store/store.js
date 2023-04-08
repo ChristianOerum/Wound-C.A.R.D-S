@@ -3,8 +3,8 @@ import { createStore } from 'vuex';
 export const store = createStore({
     state: {
         armor: {
-          wearingHelmet: true,
-          wearingChestPlate: true,
+          wearingHelmet: JSON.parse(localStorage.getItem('wearingHelmet')),
+          wearingChestPlate: JSON.parse(localStorage.getItem('wearingChestPlate')),
         },
         generated_WoundcardIndex: 0,
         respawn_timer: 0,
@@ -433,5 +433,12 @@ export const store = createStore({
 
 
         ]
+      },
+      mutations: {
+        agreePrivacyPolicy(state) {
+          localStorage.setItem('agreedToPrivacy', true);
+          state.agreedToPrivacy = true;
       }
+      }
+
 })
