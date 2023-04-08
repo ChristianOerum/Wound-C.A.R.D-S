@@ -9,6 +9,7 @@ export const store = createStore({
         generated_WoundcardIndex: 0,
         respawn_timer: 0,
         countdownStarted: false,
+        loggedIn: JSON.parse(localStorage.getItem('loggedIn')),
         woundCardGenerated: false,
         wound_cards: [
 

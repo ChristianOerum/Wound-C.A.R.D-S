@@ -24,7 +24,7 @@
 
                     <div @click="loginAsGuest()" class="bg-[#2D3034] h-[100%] w-[100%] col-start-2 row-span-1 flex flex-cols items-center justify-center p-[5px] rounded-full">
                         <div class="bg-[#424549] flex flex-cols items-center justify-center w-[100%] h-[100%] rounded-full">
-                            <p class="text-white/[.7] font-semibold">Guest</p>
+                            <p class="text-white/[.7] font-semibold">Gæst</p>
                         </div>
                     </div>
 
@@ -32,7 +32,7 @@
 
             </div>
 
-            <p class="absolute bottom-[35px] font-semibold text-white/[0.1]">App v1.001</p>
+            <p class="absolute bottom-[35px] font-semibold text-white/[0.1]">App v1.003</p>
             <p class="absolute bottom-[20px] text-[10px] font-semibold text-white/[0.1]">Copyright © 2023 C.A.R.D. Airsoft. Alle rettigheder forbeholdes.</p>
         </div>
 
@@ -44,7 +44,12 @@
 //import router
 import { router } from '../router/index.js'
 
+//import store
+import { store } from '../store/store.js'
+
 function loginAsGuest(){
+    store.state.loggedIn = true
+    localStorage.setItem('loggedIn','true')
     router.replace({ name: 'WoundCardMain' })
 }
 

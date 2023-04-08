@@ -1,5 +1,8 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 
+//import store
+import { store } from '../store/store.js'
+
 //views
 import WoundCardMain from '../views/WoundCardMain.vue'
 import GivenWoundCard from '../views/GivenWoundCardPage.vue'
@@ -10,17 +13,26 @@ import Account from '../views/AccountPage.vue'
 const routes = [
   {
     path: '/',
-    redirect: '/woundcard-main'
+    redirect: '/woundcard-main',
+    meta: {
+        requiresAuth: true
+      }
   },
   {
     path: '/woundcard-main',
     name: 'WoundCardMain',
-    component: WoundCardMain
+    component: WoundCardMain,
+    meta: {
+        requiresAuth: true
+      }
   },
   {
     path: '/given-woundcard',
     name: 'GivenWoundCardPage',
-    component: GivenWoundCard
+    component: GivenWoundCard,
+    meta: {
+        requiresAuth: true
+      }
   },
   {
     path: '/login',
@@ -30,18 +42,40 @@ const routes = [
   {
     path: '/team',
     name: 'Team',
-    component: Team
+    component: Team,
+    meta: {
+        requiresAuth: true
+      }
   },
   {
     path: '/Account',
     name: 'Account',
-    component: Account
+    component: Account,
+    meta: {
+        requiresAuth: true
+      }
   }
 ]
 
 export const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes
+})
+
+
+router.beforeEach((to, from, next) => {
+
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    // this route requires auth, check if logged in
+    // if not, redirect to login page.
+    if (store.state.loggedIn != true) {
+      next('/login')
+    } else {
+      next() // go to wherever I'm going
+    }
+  } else {
+    next() // does not require auth, make sure to always call next()!
+  }
 })
 
 export default router
