@@ -1,11 +1,16 @@
 <template>
 
 <RouterView v-slot="{ Component }">
-    <Transition enter-from-class="opacity-0" enter-active-class="transition duration-500">
+
+  <Transition enter-from-class="opacity-0" enter-active-class="transition duration-500">
       <component :is="Component"/>
     </Transition>
 
   </RouterView>
+
+  <div class="h-[80px] w-[100%] bottom-[20px] absolute flex flex-col items-center justify-center">
+      <nav_bar class="w-[90%]"></nav_bar>
+  </div>
 
 </template>
 
@@ -13,6 +18,8 @@
 //import onMounted
 import { onMounted, onBeforeMount } from 'vue'
 
+//import comps
+import nav_bar from './components/nav_bar.vue';
 
 //import apacitor/status-bar
 import { StatusBar } from '@capacitor/status-bar';

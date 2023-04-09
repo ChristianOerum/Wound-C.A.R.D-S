@@ -1,6 +1,6 @@
 <template>
 
-    <div class="w-[100%] h-[100%] bg-[#36393E] rounded-xl grid relative pl-3 pr-3" style="grid-template-columns: 1fr 1fr 1fr 1fr">
+    <div v-if="route.name != 'Login'" class="w-[100%] h-[100%] bg-[#36393E] rounded-xl grid relative pl-3 pr-3" style="grid-template-columns: 1fr 1fr 1fr 1fr">
 
         <div v-if="route.name == 'WoundCardMain' || route.name == 'GivenWoundCardPage'" class="col-start-1 col-span-1 w-auto h-[100%] flex flex-col items-center justify-center">
             <SVG_icon @click="goToWoundsMain()" class="w-12 h-12" name="Menu_woundcard" style="opacity: 1"></SVG_icon>
