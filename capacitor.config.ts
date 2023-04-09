@@ -5,6 +5,9 @@ const config: CapacitorConfig = {
   appName: 'Wound C.A.R.Ds',
   webDir: 'dist',
   bundledWebRuntime: false,
+  android: {
+    backgroundColor: '#1E2124'
+},
   plugins: {
     SplashScreen: {
       launchShowDuration: 3000,
