@@ -40,7 +40,7 @@ onBeforeMount(() => {
 
 })
 
-onMounted(() => {
+onMounted( async () => {
 
   if (localStorage.getItem('loggedIn') == null) {
     store.state.loggedIn = false

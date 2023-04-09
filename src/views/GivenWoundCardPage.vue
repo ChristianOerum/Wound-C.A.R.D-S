@@ -263,6 +263,9 @@ import { store } from '../store/store.js'
 import { router } from '../router/index.js'
 import { useRoute } from 'vue-router';
 
+//import localNotification
+import { LocalNotifications } from '@capacitor/local-notifications'
+
 //import onmount
 import { onMounted } from 'vue'
 import { onBeforeUnmount } from 'vue'
@@ -272,6 +275,16 @@ const route = useRoute()
 let id
 
 onMounted(() => {
+
+    LocalNotifications.registerActionTypes({
+        types: [{
+        id: 'CURE',
+        actions: [{
+            id: 'view',
+            title: 'Bekræft Behandeling'
+        }]
+    }]
+    })
 
     const svg = document.getElementById('vectorAvatar')
 
@@ -362,9 +375,10 @@ onBeforeUnmount(() => {
 
 function fmtMSS(s){return(s-(s%=60))/60+(9<s?':':':0')+s}
 
-function woundCardTreated(){
+async function woundCardTreated(){
     console.log("Wound Treated!")
     store.state.woundCardGenerated = false
+
     router.replace({ name: 'WoundCardMain' })
 }
 
@@ -374,10 +388,27 @@ function woundCardCountdownStart(){
         
         store.state.countdownStarted = true
 
-        function countdown() {
+        async function countdown() {
             if (store.state.respawn_timer == 0 || store.state.countdownStarted == false) {
                 clearInterval(id);
                 store.state.countdownStarted = false
+
+                //Local Notification
+
+                await LocalNotifications.schedule({
+                    notifications: [{
+                        title: 'Behandling gennemført!',
+                        body: 'Du er nu kureret, Klik her for at bekræfte din behandling.',
+                        id: 1,
+                        iconColor: '#0097ff',
+                        actionTypeId: 'CURE',
+                        schedule: {
+                            allowWhileIdle: true
+                        }
+                    }]
+                })
+
+
             }
             store.state.respawn_timer -= 1
         }
