@@ -397,10 +397,10 @@ function woundCardCountdownStart(){
 
                 await LocalNotifications.schedule({
                     notifications: [{
-                        title: 'Behandling gennemført!',
-                        body: 'Du er nu kureret, Klik her for at bekræfte din behandling.',
+                        title: 'Wound card behandling gennemført!',
+                        body: 'Du er nu kureret, klik her for at bekræfte din behandling.',
                         id: 1,
-                        iconColor: '#0097ff',
+                        iconColor: '#F8D027',
                         actionTypeId: 'CURE',
                         schedule: {
                             allowWhileIdle: true
