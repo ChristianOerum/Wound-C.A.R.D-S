@@ -48,12 +48,12 @@ onMounted( async () => {
   }
 
   if (localStorage.getItem('wearingHelmet') == null) {
-    store.state.wearingHelmet = false
+    store.state.armor.wearingHelmet = false
     localStorage.setItem('wearingHelmet','false')
   }
 
   if (localStorage.getItem('wearingChestPlate') == null) {
-    store.state.wearingChestPlate = false
+    store.state.armor.wearingChestPlate = false
     localStorage.setItem('wearingChestPlate','false')
   }
 
