@@ -231,15 +231,12 @@
 
         <plate_helmet_toggle class="row-start-2 row-span-1 h-[50px]"></plate_helmet_toggle>
 
-        <nav_bar class="row-start-3 row-span-1 h-[80px]"></nav_bar>
-
     </div>
 
 </template>
 
 <script setup lang="ts">
 //import comps
-import nav_bar from '../components/nav_bar.vue'
 import plate_helmet_toggle from '../components/plate_helmet_toggle.vue'
 import SVG_icon from '../assets/SVG_icons.vue'
 

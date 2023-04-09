@@ -1,13 +1,10 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.woundcard.app',
-  appName: 'woundcard-app',
+  appId: 'com.wound-cards',
+  appName: 'Wound C.A.R.Ds',
   webDir: 'dist',
   bundledWebRuntime: false,
-  android: {
-    backgroundColor: '#303336'
-},
   plugins: {
     SplashScreen: {
       launchShowDuration: 3000,
@@ -15,12 +12,10 @@ const config: CapacitorConfig = {
       launchFadeOutDuration: 700,
       splashImmersive: true,
       splashFullScreen: true,
+      androidSplashResourceName: 'splash',
       layoutName: 'launch_screen',
-      useDialog: false,
-      androidSplashResourceName: "splash",
       androidScaleType: "FIT_CENTER",
       backgroundColor: "#1E2124",
-
 
     },
   },

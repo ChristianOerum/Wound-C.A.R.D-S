@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">woundcard-app</string>
-    <string name="title_activity_main">woundcard-app</string>
-    <string name="package_name">woundcard.app</string>
-    <string name="custom_url_scheme">woundcard.app</string>
+    <string name="app_name">Wound C.A.R.Ds</string>
+    <string name="title_activity_main">Wound C.A.R.Ds</string>
+    <string name="package_name">Wound C.A.R.Ds</string>
+    <string name="custom_url_scheme">Wound C.A.R.Ds</string>
 </resources>
