@@ -32,7 +32,7 @@
 
             </div>
 
-            <p class="absolute bottom-[35px] font-semibold text-white/[0.1]">App v1.003</p>
+            <p class="absolute bottom-[35px] font-semibold text-white/[0.1]">App v1.004</p>
             <p class="absolute bottom-[20px] text-[10px] font-semibold text-white/[0.1]">Copyright © 2023 C.A.R.D. Airsoft. Alle rettigheder forbeholdes.</p>
         </div>
 

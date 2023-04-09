@@ -36,6 +36,8 @@
 
 
                 <div v-if="(store.state.wound_cards[index].chestWound == true && store.state.armor.wearingChestPlate == true) || (store.state.wound_cards[index].headWound == true && store.state.armor.wearingHelmet == true)">
+                    <p class="font-semibold text-[#F8D027]">{{ "Kort Nr. " + store.state.wound_cards[index].id }}</p>
+                    
                     <p class="font-semibold text-[#F8D027]">Skader:</p>
                     <p class="mb-2 opacity-[0.9]">{{ store.state.wound_cards[index].skade }}</p>
 
@@ -72,7 +74,7 @@
                         
                         <p class="ml-3 font-semibold text-[#F8D027] text-[22px]">{{ fmtMSS(store.state.respawn_timer) }}</p>
 
-                        <div @click="woundCardCountdownStart()" class="behandel_button w-auto h-[calc(100%-10px)] bg-[#F8D027] flex flex-cols items-center rounded-full absolute right-[0px] right-[5px]">
+                        <div id="behandel_button1" @click="woundCardCountdownStart()" class="w-auto h-[calc(100%-10px)] bg-[#F8D027] flex flex-cols items-center rounded-full absolute right-[0px] right-[5px]">
                             <SVG_icon class=" h-5 w-5 ml-2" name="clock"></SVG_icon>
                             <p class="ml-1 mr-3 font-semibold text-[#584805]">Behandel</p>
                         </div>
@@ -97,6 +99,8 @@
 
 
                 <div v-else-if="(store.state.wound_cards[index].chestWound == true && store.state.armor.wearingChestPlate == false) || (store.state.wound_cards[index].headWound == true && store.state.armor.wearingHelmet == false)">
+                    <p class="font-semibold text-[#F8D027]">{{ "Kort Nr. " + store.state.wound_cards[index].id }}</p>
+                    
                     <p class="font-semibold text-[#F8D027]">Skader:</p>
                     <p class="mb-2 opacity-[0.9]">{{ store.state.wound_cards[index].skade }}</p>
 
@@ -128,11 +132,11 @@
                     
                     </div>
 
-                    <div v-else-if="store.state.wound_cards[index].behandlings_timer.armorFalse.timerActive == true" class="bg-[#3E3C2F]/[.7] h-[50px] w-[100%] rounded-full p-[5px] relative flex flex-row items-center">
+                    <div v-else-if="store.state.wound_cards[index].behandlings_timer.armorFalse.timerActive == true && store.state.respawn_timer > 0" class="bg-[#3E3C2F]/[.7] h-[50px] w-[100%] rounded-full p-[5px] relative flex flex-row items-center">
                     
                         <p class="ml-3 font-semibold text-[#F8D027] text-[22px]">{{ fmtMSS(store.state.respawn_timer) }}</p>
 
-                        <div @click="woundCardCountdownStart()" class="behandel_button w-auto h-[calc(100%-10px)] bg-[#F8D027] flex flex-cols items-center rounded-full absolute right-[0px] right-[5px]">
+                        <div id="behandel_button2" @click="woundCardCountdownStart()" class="w-auto h-[calc(100%-10px)] bg-[#F8D027] flex flex-cols items-center rounded-full absolute right-[0px] right-[5px]">
                             <SVG_icon class=" h-5 w-5 ml-2" name="clock"></SVG_icon>
                             <p class="ml-1 mr-3 font-semibold text-[#584805]">Behandel</p>
                         </div>
@@ -157,6 +161,8 @@
 
 
                 <div v-else-if="store.state.wound_cards[index].chestWound == false && store.state.wound_cards[index].headWound == false ">
+                    <p class="font-semibold text-[#F8D027]">{{ "Kort Nr. " + store.state.wound_cards[index].id }}</p>
+                    
                     <p class="font-semibold text-[#F8D027]">Skader:</p>
                     <p class="mb-2 opacity-[0.9]">{{ store.state.wound_cards[index].skade }}</p>
 
@@ -188,11 +194,11 @@
                     
                     </div>
 
-                    <div v-else-if="store.state.wound_cards[index].behandlings_timer.armorFalse.timerActive == true" class="bg-[#3E3C2F]/[.7] h-[50px] w-[100%] rounded-full p-[5px] relative flex flex-row items-center">
+                    <div v-else-if="store.state.wound_cards[index].behandlings_timer.armorFalse.timerActive == true && store.state.respawn_timer > 0" class="bg-[#3E3C2F]/[.7] h-[50px] w-[100%] rounded-full p-[5px] relative flex flex-row items-center">
                         
                         <p class="ml-3 font-semibold text-[#F8D027] text-[22px]">{{ fmtMSS(store.state.respawn_timer) }}</p>
 
-                        <div @click="woundCardCountdownStart()" class="behandel_button w-auto h-[calc(100%-10px)] bg-[#F8D027] flex flex-cols items-center rounded-full absolute right-[0px] right-[5px]">
+                        <div id="behandel_button3" @click="woundCardCountdownStart()" class="w-auto h-[calc(100%-10px)] bg-[#F8D027] flex flex-cols items-center rounded-full absolute right-[0px] right-[5px]">
                             <SVG_icon class=" h-5 w-5 ml-2" name="clock"></SVG_icon>
                             <p class="ml-1 mr-3 font-semibold text-[#584805]">Behandel</p>
                         </div>
@@ -371,8 +377,6 @@ function woundCardCountdownStart(){
         
         store.state.countdownStarted = true
 
-        document.querySelector('.behandel_button').style.animation = 'pulse 2s infinite ease'
-        
         function countdown() {
             if (store.state.respawn_timer == 0 || store.state.countdownStarted == false) {
                 clearInterval(id);
