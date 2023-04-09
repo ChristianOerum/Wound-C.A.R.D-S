@@ -10,12 +10,29 @@
 
 <script setup lang="ts">
 //import onMounted
-import { onMounted } from 'vue'
+import { onMounted, onBeforeMount } from 'vue'
+
+//import apacitor/status-bar
+import { StatusBar } from '@capacitor/status-bar';
+import { NavigationBar } from '@hugotomazi/capacitor-navigation-bar'
 
 //import store
 import { store } from './store/store.js'
 
+onBeforeMount(() => {
+
+  StatusBar.setBackgroundColor({ color: '#1E2124' }).catch(err => {
+      console.log(err);
+    });
+
+    NavigationBar.setColor({ color: '#1E2124' }).catch(err => {
+      console.log(err);
+    });
+
+})
+
 onMounted(() => {
+
   if (localStorage.getItem('loggedIn') == null) {
     store.state.loggedIn = false
     localStorage.setItem('loggedIn','false')
