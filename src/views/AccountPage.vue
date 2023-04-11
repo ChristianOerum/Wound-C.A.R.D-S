@@ -29,7 +29,7 @@
 
             <QrcodeVue :value="store.state.userInfo.UserID" :size="150" background="#1E2124" foreground="#505254" level="M"/>
             
-            <p class="text-[#505254] text-[20px] font-semibold">{{ store.state.userInfo.UserID }}</p>
+            <p class="text-[#505254] text-[22px] font-semibold">{{ store.state.userInfo.UserID }}</p>
 
         </div>
         

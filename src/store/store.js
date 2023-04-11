@@ -4,7 +4,7 @@ export const store = createStore({
     state: {
         userInfo: {
           loggedIn: true,
-          UserID: "123456789101", //12 cifre
+          UserID: "323456789101", //12 cifre
           FirstName: "Chris",
           LastName: "Ørum",
           Tag: "ChrissyWakeUp"
