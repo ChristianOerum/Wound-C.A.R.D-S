@@ -9,6 +9,7 @@ import GivenWoundCard from '../views/GivenWoundCardPage.vue'
 import Login from '../views/LoginPage.vue'
 import Team from '../views/TeamPage.vue'
 import Account from '../views/AccountPage.vue'
+import CreateUser from '../views/CreateUserPage.vue'
 
 const routes = [
   {
@@ -51,6 +52,14 @@ const routes = [
     path: '/Account',
     name: 'Account',
     component: Account,
+    meta: {
+        requiresAuth: true
+      }
+  },
+  {
+    path: '/create-user',
+    name: 'CreateUser',
+    component: CreateUser,
     meta: {
         requiresAuth: true
       }

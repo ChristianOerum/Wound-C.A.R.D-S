@@ -4,9 +4,10 @@ export const store = createStore({
     state: {
         userInfo: {
           loggedIn: true,
-          UserID: "323456789101", //12 cifre
+          UserID: "NSm46hanp89afpxr1uT", //12 cifre
           FirstName: "Chris",
           LastName: "Ørum",
+          Email: "chri@bubbles.dk",
           Tag: "ChrissyWakeUp"
           
         },
