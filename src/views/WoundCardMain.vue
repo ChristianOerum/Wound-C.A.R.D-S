@@ -4,7 +4,7 @@
 
         <div class="row-start-1 row-span-1 w-[100%] h-[100%] relative flex flex-col items-center">
 
-            <p class="text-center w-[90%] text-[#686A6C] font-semibold text-[18px] mt-[10px]">Swipe for at generer nyt random wound-card.</p>
+            <p class="text-center w-[90%] text-[#686A6C] font-semibold text-[2.1vh] mt-[10px]">Swipe for at generer nyt random wound-card.</p>
 
             <img class="h-[100px] absolute bottom-[10px] h-[85%]" src='../assets/svg/blank_avatar.svg'/>
 
@@ -16,7 +16,7 @@
 
                     <div id="slider" class="relative rounded-full bg-[#F8D027] h-[100%] w-[56px] flex flex-col items-center justify-center">
                         
-                        <p id="swipe-text" class="absolute font-semibold text-[#ffffff]/[.2] w-[80px] left-[66px] top-[16px]">Swipe her</p>
+                        <p id="swipe-text" class="absolute font-semibold w-max text-[1.9vh] text-[#ffffff]/[.2] w-[80px] left-[66px] top-[50%] translate-y-[-50%]">Swipe her</p>
 
                         <SVG_icon class="h-[70%] w-[70%]" name="dice"></SVG_icon>
 

@@ -31,14 +31,14 @@
 
 
 
-            <div class="absolute bottom-[35px] h-fit w-[100%] text-[18px] text-white">
+            <div class="absolute bottom-[35px] h-fit w-[100%] text-[2.1vh] text-white">
 
 
 
                 <div v-if="(store.state.wound_cards[index].chestWound == true && store.state.armor.wearingChestPlate == true) || (store.state.wound_cards[index].headWound == true && store.state.armor.wearingHelmet == true)">
                     <p class="font-semibold text-[#F8D027]">{{ "Kort Nr. " + store.state.wound_cards[index].id }}</p>
                     
-                    <p class="font-semibold text-[#F8D027]">Skader:</p>
+                    <p class="font-semibold text-[#F8D027]">Skader1:</p>
                     <p class="mb-2 opacity-[0.9]">{{ store.state.wound_cards[index].skade }}</p>
 
                     <p class="font-semibold text-[#F8D027]">Behandling:</p>
@@ -101,7 +101,7 @@
                 <div v-else-if="(store.state.wound_cards[index].chestWound == true && store.state.armor.wearingChestPlate == false) || (store.state.wound_cards[index].headWound == true && store.state.armor.wearingHelmet == false)">
                     <p class="font-semibold text-[#F8D027]">{{ "Kort Nr. " + store.state.wound_cards[index].id }}</p>
                     
-                    <p class="font-semibold text-[#F8D027]">Skader:</p>
+                    <p class="font-semibold text-[#F8D027]">Skader2:</p>
                     <p class="mb-2 opacity-[0.9]">{{ store.state.wound_cards[index].skade }}</p>
 
                     <p class="font-semibold text-[#F8D027]">Behandling:</p>
@@ -163,7 +163,7 @@
                 <div v-else-if="store.state.wound_cards[index].chestWound == false && store.state.wound_cards[index].headWound == false ">
                     <p class="font-semibold text-[#F8D027]">{{ "Kort Nr. " + store.state.wound_cards[index].id }}</p>
                     
-                    <p class="font-semibold text-[#F8D027]">Skader:</p>
+                    <p class="font-semibold text-[#F8D027]">Skader3:</p>
                     <p class="mb-2 opacity-[0.9]">{{ store.state.wound_cards[index].skade }}</p>
 
                     <p class="font-semibold text-[#F8D027]">Behandling:</p>

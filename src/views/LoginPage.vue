@@ -5,8 +5,8 @@
         <div class="flex flex-col items-center justify-center h-[100%] w-[100%]">
             <img class="h-auto w-[50%]" src="../assets/svg/card_logo.svg">
 
-            <p class="text-[36px] text-white font-semibold">Wound Cards</p>
-            <p class="text-[18px] text-white/[.4] font-semibold mb-5">By C.A.R.D. Airsoft</p>  
+            <p class="text-[4vh] text-white font-semibold">Wound Cards</p>
+            <p class="text-[2.1vh] text-white/[.4] font-semibold mb-5">By C.A.R.D. Airsoft</p>  
 
 
             <div class="w-[80%] ">
