@@ -10,9 +10,9 @@
 
 
             <div class="w-[80%] ">
-                <input type="text" placeholder="Email" class="placeholder-[#535659] bg-[#36393E] text-white font-semibold w-[100%] p-3 mb-2 rounded-xl focus:outline-[3px] focus:outline outline-[#F8D027]"/>
+                <input type="text" placeholder="Email" class="placeholder-[#535659] bg-[#282C30] text-white font-semibold w-[100%] p-3 mb-2 rounded-xl focus:outline-[3px] focus:outline outline-[#F8D027]"/>
 
-                <input type="text" placeholder="Password" class="placeholder-[#535659] bg-[#36393E] text-white font-semibold w-[100%] p-3 mb-2 rounded-xl focus:outline-[3px] focus:outline outline-[#F8D027]"/>
+                <input type="text" placeholder="Password" class="placeholder-[#535659] bg-[#282C30] text-white font-semibold w-[100%] p-3 mb-2 rounded-xl focus:outline-[3px] focus:outline outline-[#F8D027]"/>
 
                 <div class="w-[100%] h-14 grid gap-2 mt-8" style="grid-template-columns: 1fr 1fr">
                     

@@ -2,6 +2,14 @@ import { createStore } from 'vuex';
 
 export const store = createStore({
     state: {
+        userInfo: {
+          loggedIn: true,
+          UserID: "123456789101", //12 cifre
+          FirstName: "Chris",
+          LastName: "Ørum",
+          Tag: "ChrissyWakeUp"
+          
+        },
         armor: {
           wearingHelmet: JSON.parse(localStorage.getItem('wearingHelmet')),
           wearingChestPlate: JSON.parse(localStorage.getItem('wearingChestPlate')),
