@@ -53,7 +53,12 @@ const route = useRoute()
 
 //functioner
 function goToLogin(){
-    store.state.loggedIn = false
+    store.state.userInfo.loggedIn = false
+    store.state.userInfo.UserID = ""
+    store.state.userInfo.FirstName = ""
+    store.state.userInfo.LastName = ""
+    store.state.userInfo.Email = ""
+    store.state.userInfo.Tag = ""
     localStorage.setItem('loggedIn','false')
     router.replace({ name: 'Login' })
 }

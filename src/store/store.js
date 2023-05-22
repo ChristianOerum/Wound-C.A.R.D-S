@@ -3,12 +3,12 @@ import { createStore } from 'vuex';
 export const store = createStore({
     state: {
         userInfo: {
-          loggedIn: true,
-          UserID: "NSm46hanp89afpxr1uT", //12 cifre
-          FirstName: "Chris",
-          LastName: "Ørum",
-          Email: "chri@bubbles.dk",
-          Tag: "ChrissyWakeUp"
+          loggedIn: false,
+          UserID: "", //12 cifre
+          FirstName: "",
+          LastName: "",
+          Email: "",
+          Tag: ""
           
         },
         armor: {

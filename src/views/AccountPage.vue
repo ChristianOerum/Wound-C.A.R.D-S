@@ -19,13 +19,13 @@
 
             <p class="text-center w-[90%] text-[#ffffff] font-semibold text-[26px] mb-6 mt-[10px]">Min konto</p>
 
-            <input type="text" placeholder="Konto display name" class="placeholder-[#535659] bg-[#282C30] text-white font-semibold w-[90%] p-3 mb-7 rounded-xl focus:outline-[3px] focus:outline outline-[#F8D027]"/>
+            <input id="1" type="text" placeholder="Konto display name" class="placeholder-[#535659] bg-[#282C30] text-white font-semibold w-[90%] p-3 mb-7 rounded-xl focus:outline-[3px] focus:outline outline-[#F8D027]"/>
 
-            <input type="text" placeholder="Fornavn" class="placeholder-[#535659] bg-[#282C30] text-white font-semibold w-[90%] p-3 mb-2 rounded-xl focus:outline-[3px] focus:outline outline-[#F8D027]"/>
+            <input id="2" type="text" placeholder="Fornavn" class="placeholder-[#535659] bg-[#282C30] text-white font-semibold w-[90%] p-3 mb-2 rounded-xl focus:outline-[3px] focus:outline outline-[#F8D027]"/>
 
-            <input type="text" placeholder="Efternavn" class="placeholder-[#535659] bg-[#282C30] text-white font-semibold w-[90%] p-3 mb-2 rounded-xl focus:outline-[3px] focus:outline outline-[#F8D027]"/>
+            <input id="3" type="text" placeholder="Efternavn" class="placeholder-[#535659] bg-[#282C30] text-white font-semibold w-[90%] p-3 mb-2 rounded-xl focus:outline-[3px] focus:outline outline-[#F8D027]"/>
 
-            <input type="text" placeholder="Email" class="placeholder-[#535659] bg-[#282C30] text-white font-semibold w-[90%] p-3 mb-9 rounded-xl focus:outline-[3px] focus:outline outline-[#F8D027]"/>
+            <input id="4" type="text" placeholder="Email" class="placeholder-[#535659] bg-[#282C30] text-white font-semibold w-[90%] p-3 mb-9 rounded-xl focus:outline-[3px] focus:outline outline-[#F8D027]"/>
 
             <QrcodeVue :value="store.state.userInfo.UserID" :size="150" background="#1E2124" foreground="#505254" level="M"/>
             
@@ -45,7 +45,19 @@ import QrcodeVue from 'qrcode.vue'
 //import store
 import { store } from '../store/store.js'
 
+//import onMounted
+import { onMounted } from 'vue'
 
-let someVar = "238456829302"
+onMounted( async () => {
+
+    if (store.state.userInfo.loggedIn == true ) {
+        document.getElementById("1").value = store.state.userInfo.Tag;
+        document.getElementById("2").value = store.state.userInfo.FirstName;
+        document.getElementById("3").value = store.state.userInfo.LastName;
+        document.getElementById("4").value = store.state.userInfo.Email;
+    }
+
+})
+
  
 </script>

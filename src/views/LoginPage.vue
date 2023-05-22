@@ -10,13 +10,13 @@
 
 
             <div class="w-[80%] ">
-                <input type="text" placeholder="Email" class="placeholder-[#535659] bg-[#282C30] text-white font-semibold w-[100%] p-3 mb-2 rounded-xl focus:outline-[3px] focus:outline outline-[#F8D027]"/>
+                <input id="email" type="email" placeholder="Email" class="placeholder-[#535659] bg-[#282C30] text-white font-semibold w-[100%] p-3 mb-2 rounded-xl focus:outline-[3px] focus:outline outline-[#F8D027]"/>
 
-                <input type="text" placeholder="Password" class="placeholder-[#535659] bg-[#282C30] text-white font-semibold w-[100%] p-3 mb-2 rounded-xl focus:outline-[3px] focus:outline outline-[#F8D027]"/>
+                <input id="password" type="password" placeholder="Password" class="placeholder-[#535659] bg-[#282C30] text-white font-semibold w-[100%] p-3 mb-2 rounded-xl focus:outline-[3px] focus:outline outline-[#F8D027]"/>
 
                 <div class="w-[100%] h-14 grid gap-2 mt-8" style="grid-template-columns: 1fr 1fr">
                     
-                    <div class="bg-[#6D6130] h-[100%] w-[100%] col-start-1 row-span-1 flex flex-cols items-center justify-center p-[5px] rounded-full">
+                    <div @click="loginAsUser()" class="bg-[#6D6130] h-[100%] w-[100%] col-start-1 row-span-1 flex flex-cols items-center justify-center p-[5px] rounded-full">
                         <div class="bg-[#F8D027] flex flex-cols items-center justify-center w-[100%] h-[100%] rounded-full">
                             <p class="text-[#584805] font-semibold ">Login</p>
                         </div>
@@ -41,20 +41,65 @@
 </template>
 
 <script setup lang="ts">
-//import router
-import { router } from '../router/index.js'
+
+//firebase realtime db
+import { db } from "../firebase";
+import { ref, query, orderByChild, equalTo, onValue } from "firebase/database";
 
 //import store
 import { store } from '../store/store.js'
 
+//import router and useroute
+import { router } from '../router/index'
+
 function loginAsGuest(){
     store.state.loggedIn = true
     localStorage.setItem('loggedIn','true')
-    router.replace({ name: 'WoundCardMain' })
+    gotoPage()
 }
 
 function loginAsUser(){
-    console.log("not yet available")
+
+    const usersRef = ref(db, "users");
+    const valueToQuery = document.getElementById('email').value;
+    const queryRef = query(usersRef, orderByChild("email"), equalTo(valueToQuery));
+
+    onValue(queryRef, (snapshot) => {
+    const data = snapshot.val();
+    // Handle the data as needed
+    
+    if (data) {
+    Object.keys(data).forEach((documentId) => {
+        const userData = data[documentId];
+            //console.log(documentId);
+            //console.log(userData.password);
+        if(document.getElementById('password').value == userData.password) {
+            console.log("logged in")
+
+            store.state.userInfo.loggedIn = true
+            store.state.loggedIn = true
+            store.state.userInfo.UserID = documentId
+            store.state.userInfo.FirstName = userData.first_name
+            store.state.userInfo.LastName = userData.last_name
+            store.state.userInfo.Email = userData.email
+            store.state.userInfo.Tag = userData.tag
+            localStorage.setItem('loggedIn','true')
+            gotoPage()
+        }
+        else {
+            console.log('Login failed')
+        }
+    });
+    }
+    else {
+        console.log('Login failed')
+    }
+});
+
+}
+
+function gotoPage(){
+    router.replace({ name: 'WoundCardMain' })
 }
 
 </script>
