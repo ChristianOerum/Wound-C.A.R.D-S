@@ -10,6 +10,7 @@ import Login from '../views/LoginPage.vue'
 import Team from '../views/TeamPage.vue'
 import Account from '../views/AccountPage.vue'
 import CreateUser from '../views/CreateUserPage.vue'
+import Scan from '../views/QRscannerPage.vue'
 
 const routes = [
   {
@@ -60,6 +61,14 @@ const routes = [
     path: '/create-user',
     name: 'CreateUser',
     component: CreateUser,
+    meta: {
+        requiresAuth: true
+      }
+  },
+  {
+    path: '/scan',
+    name: 'Scan',
+    component: Scan,
     meta: {
         requiresAuth: true
       }

@@ -21,11 +21,11 @@ function writeUserData() {
     const newUserRef = push(usersRef)
 
     set(newUserRef, {
-        first_name: "Chris",
-        last_name: "Ørum",
-        email: "chri@bubbles.dk",
-        tag: "Mr_Bubbles",
-        password: "bubbles123"
+        first_name: "test",
+        last_name: "test",
+        email: "test@bubbles.dk",
+        tag: "test",
+        password: "test"
     })
 }
 
