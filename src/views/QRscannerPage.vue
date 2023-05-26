@@ -11,7 +11,7 @@ import { QrStream } from 'vue3-qr-reader';
 
 //firebase realtime db
 import { db } from "../firebase";
-import { ref, query, orderByChild, equalTo, onValue } from "firebase/database";
+import { ref, update, onValue } from "firebase/database";
 
 //import store
 import { store } from '../store/store.js'
@@ -25,10 +25,45 @@ function gotoPage(){
 }
 
 function onDecode(decodedString){
-    console.log(decodedString)
     if (decodedString != "") {
-        router.replace({ name: 'Team' })
-    }
+        console.log("scanned")
+        let tempArr
+        const recordRef = ref(db, "users/" + store.state.userInfo.UserID);
+
+        onValue(recordRef, (snapshot) => {
+            const data = snapshot.val();
+
+            for (const element of data.teamList) {
+                if (element == decodedString || decodedString.charAt(0) != "-" ) {
+                    console.log("ID already in your list or QR is invalid.")
+                    //Kill function
+                    return
+                }
+            }
+
+            if (data.teamList.length > 0 ) {
+                tempArr = data.teamList
+                tempArr.push(decodedString)
+            } 
+            else {
+                tempArr = [decodedString]
+            }
+        })
+
+        const updateData = {
+            teamList: tempArr
+        };
+
+        update(recordRef, updateData)
+        .then(() => {
+            console.log("Updated team list");
+
+            router.replace({ name: 'Team' })
+        })
+        .catch((error) => {
+            console.error("Error updated team list:", error);
+        });
+}
 }
 
 function onInit() {

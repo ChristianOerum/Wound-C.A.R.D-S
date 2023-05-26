@@ -83,7 +83,19 @@ function loginAsUser(){
             store.state.userInfo.LastName = userData.last_name
             store.state.userInfo.Email = userData.email
             store.state.userInfo.Tag = userData.tag
+            store.state.userInfo.TeamList = userData.teamList
             localStorage.setItem('loggedIn','true')
+
+            localStorage.setItem('UserLoggedIn','true')
+            localStorage.setItem('UserId',documentId)
+            localStorage.setItem('FirstName',userData.first_name)
+            localStorage.setItem('LastName',userData.last_name)
+            localStorage.setItem('Email',userData.email)
+            localStorage.setItem('Tag',userData.tag)
+            localStorage.setItem('TeamList',userData.teamList)
+
+            console.log(store.state.userInfo.UserID)
+
             gotoPage()
         }
         else {

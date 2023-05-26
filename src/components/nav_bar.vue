@@ -59,7 +59,17 @@ function goToLogin(){
     store.state.userInfo.LastName = ""
     store.state.userInfo.Email = ""
     store.state.userInfo.Tag = ""
+    store.state.userInfo.TeamList = ""
     localStorage.setItem('loggedIn','false')
+
+    localStorage.setItem('UserLoggedIn','true')
+    localStorage.setItem('UserId',"")
+    localStorage.setItem('FirstName',"")
+    localStorage.setItem('LastName',"")
+    localStorage.setItem('Email',"")
+    localStorage.setItem('Tag',"")
+    localStorage.setItem('TeamList',"")
+
     router.replace({ name: 'Login' })
 }
 

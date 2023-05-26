@@ -3,12 +3,14 @@ import { createStore } from 'vuex';
 export const store = createStore({
     state: {
         userInfo: {
-          loggedIn: false,
-          UserID: "", //12 cifre
-          FirstName: "",
-          LastName: "",
-          Email: "",
-          Tag: ""
+          loggedIn: JSON.parse(localStorage.getItem('UserLoggedIn')),
+          UserID: localStorage.getItem('UserId'),
+          FirstName: localStorage.getItem('FirstName'),
+          LastName: localStorage.getItem('LastName'),
+          Email: localStorage.getItem('Email'),
+          Tag: localStorage.getItem('Tag'),
+          TeamList: [],
+          TeamObjectArr: []
           
         },
         armor: {

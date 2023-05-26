@@ -16,8 +16,8 @@ import { ref, set, push } from 'firebase/database'
 
 function writeUserData() {
 
-    const usersRef = ref(db, 'users')
 
+    const usersRef = ref(db, 'users')
     const newUserRef = push(usersRef)
 
     set(newUserRef, {
@@ -25,12 +25,26 @@ function writeUserData() {
         last_name: "test",
         email: "test@bubbles.dk",
         tag: "test",
-        password: "test"
-    })
+        password: "test",
+        teamList: ""
+    }).then(() => {
+    
+        const userId = newUserRef.key;
+        const medicalRef = ref(db, 'medicalStatus')
+        const newMedicalRef = push(medicalRef)
+
+        set(newMedicalRef, {
+            relatedID: userId,
+            status: "Alive",
+            tag: "test"
+        })
+
+        console.log("added user and medical")
+
+    }).catch((error) => {
+        console.log("Error creating user: " + error);
+    });
+
 }
-
-
-
-
 
 </script>
