@@ -1,6 +1,6 @@
 //firebase realtime db
 import { db } from "../firebase";
-import { ref, query, orderByChild, equalTo, onValue, get } from "firebase/database";
+import { ref, query, orderByChild, equalTo, onValue, get, child, update } from "firebase/database";
 
 //import store
 import { store } from '../store/store.js'
@@ -30,9 +30,30 @@ export async function firebaseInit() {
               localStorage.setItem('Email',data.email)
               localStorage.setItem('Tag',data.tag)
     
-    
-              store.state.userInfo.TeamObjectArr = []
-    
+      const usersRef = ref(db, "medicalStatus");
+      const queryRef = query(usersRef, orderByChild("relatedID"), equalTo(store.state.userInfo.UserID));
+
+      get(queryRef).then((snapshot) => {
+        const recordKey = Object.keys(snapshot.val())[0];
+        const recordRef = child(usersRef, recordKey);
+        const recordData = snapshot.val()[recordKey];
+
+        let updateData = {
+          status: "Alive"
+        };
+
+          update(recordRef, updateData)
+          .then(() => {
+              console.log("Updated team list");
+          })
+          .catch((error) => {
+              console.error("Error updated team list:", error);
+          });
+
+      })
+
+      store.state.userInfo.TeamObjectArr = []
+
       for (const element of store.state.userInfo.TeamList) {
         
             const usersRef = ref(db, "medicalStatus");

@@ -3,6 +3,9 @@ import { store } from './store/store.js';
 
 import App from './App.vue'
 import router from './router/index.js';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
 
 import { IonicVue } from '@ionic/vue';
 
@@ -28,12 +31,14 @@ import './assets/style.css'
 //import auto animate
 import { autoAnimatePlugin } from '@formkit/auto-animate/vue'
 
+library.add(fas)
 
 const app = createApp(App)
   .use(IonicVue)
   .use(router)
   .use(autoAnimatePlugin)
   .use(store)
+  .component("fa", FontAwesomeIcon)
   
 router.isReady().then(() => {
   app.mount('#app');

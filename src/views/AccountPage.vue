@@ -27,9 +27,9 @@
 
             <input id="4" type="text" placeholder="Email" class="placeholder-[#535659] bg-[#282C30] text-white font-semibold w-[90%] p-3 mb-9 rounded-xl focus:outline-[3px] focus:outline outline-[#F8D027]"/>
 
-            <QrcodeVue :value="store.state.userInfo.UserID" :size="150" background="#1E2124" foreground="#505254" level="M"/>
+            <QrcodeVue :value="store.state.userInfo.UserID" :size="170" background="#1E2124" foreground="#505254" level="M"/>
             
-            <p class="text-[#505254] text-[13px] mt-[2px] font-semibold">{{ store.state.userInfo.UserID }}</p>
+            <p class="text-[#505254] text-[14px] mt-[2px] font-semibold">{{ store.state.userInfo.UserID }}</p>
 
         </div>
         

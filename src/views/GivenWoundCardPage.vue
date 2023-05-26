@@ -266,6 +266,10 @@ import { useRoute } from 'vue-router';
 //import localNotification
 import { LocalNotifications } from '@capacitor/local-notifications'
 
+//firebase realtime db
+import { db } from "../firebase";
+import { ref, query, orderByChild, equalTo, update, get, child } from "firebase/database";
+
 //import onmount
 import { onMounted } from 'vue'
 import { onBeforeUnmount } from 'vue'
@@ -275,6 +279,42 @@ const route = useRoute()
 let id
 
 onMounted(() => {
+
+    const usersRef = ref(db, "medicalStatus");
+        const queryRef = query(usersRef, orderByChild("relatedID"), equalTo(store.state.userInfo.UserID));
+
+        get(queryRef).then((snapshot) => {
+            const recordKey = Object.keys(snapshot.val())[0];
+            const recordRef = child(usersRef, recordKey);
+            const recordData = snapshot.val()[recordKey];
+
+            if (store.state.wound_cards[index].efter_behandlingen.armorTrue.includes("død") || store.state.wound_cards[index].efter_behandlingen.armorFalse.includes("død") ) {
+                let updateData = {
+                    status: "Dead"
+                };
+
+                update(recordRef, updateData)
+                .then(() => {
+                    console.log("Updated team list");
+                })
+                .catch((error) => {
+                    console.error("Error updated team list:", error);
+                });
+            }
+            else {
+                let updateData = {
+                    status: "Waiting for treatment"
+                };
+
+                update(recordRef, updateData)
+                .then(() => {
+                    console.log("Updated team list");
+                })
+                .catch((error) => {
+                    console.error("Error updated team list:", error);
+                });
+            }
+    })
 
     LocalNotifications.registerActionTypes({
         types: [{
@@ -379,6 +419,29 @@ async function woundCardTreated(){
     console.log("Wound Treated!")
     store.state.woundCardGenerated = false
 
+
+    const usersRef = ref(db, "medicalStatus");
+    const queryRef = query(usersRef, orderByChild("relatedID"), equalTo(store.state.userInfo.UserID));
+
+    get(queryRef).then((snapshot) => {
+        const recordKey = Object.keys(snapshot.val())[0];
+        const recordRef = child(usersRef, recordKey);
+        const recordData = snapshot.val()[recordKey];
+
+        let updateData = {
+            status: "Alive"
+    };
+
+    update(recordRef, updateData)
+        .then(() => {
+            console.log("Updated team list");
+        })
+        .catch((error) => {
+            console.error("Error updated team list:", error);
+        });
+    })
+
+
     router.replace({ name: 'WoundCardMain' })
 }
 
@@ -387,6 +450,28 @@ function woundCardCountdownStart(){
     if (store.state.countdownStarted == false){
         
         store.state.countdownStarted = true
+
+
+        const usersRef = ref(db, "medicalStatus");
+        const queryRef = query(usersRef, orderByChild("relatedID"), equalTo(store.state.userInfo.UserID));
+
+        get(queryRef).then((snapshot) => {
+            const recordKey = Object.keys(snapshot.val())[0];
+            const recordRef = child(usersRef, recordKey);
+            const recordData = snapshot.val()[recordKey];
+
+            let updateData = {
+                status: "Under treatment"
+        };
+
+        update(recordRef, updateData)
+            .then(() => {
+                console.log("Updated team list");
+            })
+            .catch((error) => {
+                console.error("Error updated team list:", error);
+            });
+        })
 
         async function countdown() {
             if (store.state.respawn_timer == 0 || store.state.countdownStarted == false) {
