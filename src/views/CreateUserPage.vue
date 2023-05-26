@@ -21,11 +21,11 @@ function writeUserData() {
     const newUserRef = push(usersRef)
 
     set(newUserRef, {
-        first_name: "test",
-        last_name: "test",
-        email: "test@bubbles.dk",
-        tag: "test",
-        password: "test",
+        first_name: "test2",
+        last_name: "test2",
+        email: "test2@bubbles.dk",
+        tag: "test2",
+        password: "test2",
         teamList: ""
     }).then(() => {
     
@@ -36,7 +36,7 @@ function writeUserData() {
         set(newMedicalRef, {
             relatedID: userId,
             status: "Alive",
-            tag: "test"
+            tag: "test2"
         })
 
         console.log("added user and medical")

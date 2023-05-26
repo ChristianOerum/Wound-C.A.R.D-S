@@ -59,7 +59,8 @@ function goToLogin(){
     store.state.userInfo.LastName = ""
     store.state.userInfo.Email = ""
     store.state.userInfo.Tag = ""
-    store.state.userInfo.TeamList = ""
+    store.state.userInfo.TeamList = []
+    store.state.userInfo.TeamObjectArr = []
     localStorage.setItem('loggedIn','false')
 
     localStorage.setItem('UserLoggedIn','true')

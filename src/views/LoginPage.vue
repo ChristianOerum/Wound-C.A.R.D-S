@@ -41,6 +41,8 @@
 </template>
 
 <script setup lang="ts">
+//mixins
+import { firebaseInit } from '../mixins/firebaseInit';
 
 //firebase realtime db
 import { db } from "../firebase";
@@ -92,10 +94,10 @@ function loginAsUser(){
             localStorage.setItem('LastName',userData.last_name)
             localStorage.setItem('Email',userData.email)
             localStorage.setItem('Tag',userData.tag)
-            localStorage.setItem('TeamList',userData.teamList)
 
             console.log(store.state.userInfo.UserID)
 
+            firebaseInit()
             gotoPage()
         }
         else {

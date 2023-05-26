@@ -16,14 +16,14 @@
 
 <script setup lang="ts">
 //import onMounted
-import { onBeforeMount } from 'vue'
+import { onMounted } from 'vue'
 
 //import comps
 import nav_bar from './components/nav_bar.vue';
 
-//firebase realtime db
-import { db } from "./firebase";
-import { ref, query, orderByChild, equalTo, onValue } from "firebase/database";
+//mixins
+import { firebaseInit } from './mixins/firebaseInit';
+
 
 //import apacitor/status-bar
 import { StatusBar } from '@capacitor/status-bar';
@@ -33,8 +33,7 @@ import { NavigationBar } from '@hugotomazi/capacitor-navigation-bar'
 import { store } from './store/store.js'
 
 
-
-onBeforeMount( async () => {
+onMounted( async () => {
 
   StatusBar.setBackgroundColor({ color: '#1E2124' }).catch(err => {
       console.log(err);
@@ -90,15 +89,8 @@ onBeforeMount( async () => {
   }
 
   if (store.state.loggedIn == true){
-    const recordRef = ref(db, "users/" + store.state.userInfo.UserID);
-
-        onValue(recordRef, (snapshot) => {
-            const data = snapshot.val();
-
-            store.state.userInfo.TeamList = data.teamList
-            
-        })
-  }
+    firebaseInit()
+}
 
 })
 

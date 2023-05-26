@@ -9,9 +9,12 @@
 //qr scanner
 import { QrStream } from 'vue3-qr-reader';
 
+//mixins
+import { firebaseInit } from '../mixins/firebaseInit';
+
 //firebase realtime db
 import { db } from "../firebase";
-import { ref, update, onValue } from "firebase/database";
+import { ref, update, get } from "firebase/database";
 
 //import store
 import { store } from '../store/store.js'
@@ -30,7 +33,7 @@ function onDecode(decodedString){
         let tempArr
         const recordRef = ref(db, "users/" + store.state.userInfo.UserID);
 
-        onValue(recordRef, (snapshot) => {
+        get(recordRef).then((snapshot) => {
             const data = snapshot.val();
 
             for (const element of data.teamList) {
@@ -42,27 +45,34 @@ function onDecode(decodedString){
             }
 
             if (data.teamList.length > 0 ) {
+                console.log("test1")
                 tempArr = data.teamList
                 tempArr.push(decodedString)
+                console.log(tempArr)
             } 
             else {
+                console.log("test2")
                 tempArr = [decodedString]
             }
-        })
 
-        const updateData = {
-            teamList: tempArr
-        };
+            const updateData = {
+                teamList: tempArr
+            };
 
-        update(recordRef, updateData)
-        .then(() => {
-            console.log("Updated team list");
+            console.log(recordRef)
+            update(recordRef, updateData)
+            .then(() => {
+                console.log("Updated team list");
 
-            router.replace({ name: 'Team' })
-        })
-        .catch((error) => {
-            console.error("Error updated team list:", error);
-        });
+                firebaseInit()
+
+                router.replace({ name: 'Team' })
+            })
+            .catch((error) => {
+                console.error("Error updated team list:", error);
+            });
+
+            })
 }
 }
 

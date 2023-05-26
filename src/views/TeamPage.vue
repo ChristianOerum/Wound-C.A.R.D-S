@@ -55,46 +55,11 @@ import SVG_icon from '../assets/SVG_icons.vue'
 //import router and useroute
 import { router } from '../router/index.js'
 
-//firebase realtime db
-import { db } from "../firebase";
-import { ref, onValue, query, orderByChild, equalTo } from "firebase/database";
-
-//import onMounted
-import { onMounted } from 'vue'
-
 //import store
 import { store } from '../store/store.js'
 
 function back(){
     router.replace({ name: 'Scan' })
 }
-
-onMounted( async () => {
-
-    store.state.userInfo.TeamObjectArr = []
-
-    for (const element of store.state.userInfo.TeamList) {
-
-        const usersRef = ref(db, "medicalStatus");
-        let newStr = element.replace(/ /g,'')
-        const queryRef = query(usersRef, orderByChild("relatedID"), equalTo(newStr));
-
-        onValue(queryRef, (snapshot) => {
-        const data = snapshot.val();
-        // Handle the data as needed
-        //console.log(data)
-
-        if (data) {
-        Object.keys(data).forEach((documentId) => {
-            const userData = data[documentId];
-
-            //console.log(userData)
-            store.state.userInfo.TeamObjectArr.push(userData)
-            //console.log(store.state.userInfo.TeamObjectArr)
-        })
-        }
-})
-}
-})
 
 </script>
